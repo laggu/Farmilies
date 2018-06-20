@@ -1,10 +1,10 @@
 var db_conn = require('./db_conn.js');
 
-var user = function (){
+var users = function (){
     conn = db_conn.db_conn();
     console.log("Success");
-    var sql = "CREATE TABLE USERS(" +
-        "id mediumint not null auto_increment," +
+    var sql = "create table if not exists USERS(" +
+        "id int not null auto_increment," +
         "email varchar(50) not null," +
         "pw char(64) not null," +
         "name varchar(10) not null," +
@@ -24,13 +24,15 @@ var user = function (){
 var works = function (){
     conn = db_conn.db_conn();
     console.log("Success");
-    var sql = "CREATE TABLE WORKS(" +
-        "id mediumint not null auto_increment," +
-        "email varchar(50) not null," +
-        "pw char(64) not null," +
-        "name varchar(10) not null," +
-        "photo varchar(30)," +
-        "primary key(id))";
+    var sql = "create table if not exists WORKS(" +
+        "id int not null auto_increment," +
+        "farmer_id int not null," +
+        "title char(100) not null," +
+        "description varchar(500) not null," +
+        "location_id int not null," +
+        "primary key(id)," +
+        "foreign key (farmer_id) references USERS(id) on delete cascade" +
+        ")";
     var result = conn.query(sql, function (err, result){
         if (err){
             throw err;
@@ -43,6 +45,8 @@ var works = function (){
 
 
 
-exports.user = user;
+exports.users = users;
+exports.works = works;
 
-user();
+users();
+works();

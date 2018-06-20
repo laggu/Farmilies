@@ -21,6 +21,26 @@ var users = function (){
     conn.end();
 };
 
+var locations = function (){
+    conn = db_conn.db_conn();
+    console.log("Success");
+    var sql = "create table if not exists LOCATIONS(" +
+        "id int not null auto_increment," +
+        "latitude double not null," +
+        "longitude double not null," +
+        "address_name varchar(100) not null," +
+        "primary key(id)" +
+        ")";
+    var result = conn.query(sql, function (err, result){
+        if (err){
+            throw err;
+        }
+        console.log("LOCATIONS TABLE CREATED");
+    });
+
+    conn.end();
+};
+
 var works = function (){
     conn = db_conn.db_conn();
     console.log("Success");
@@ -31,13 +51,14 @@ var works = function (){
         "description varchar(500) not null," +
         "location_id int not null," +
         "primary key(id)," +
-        "foreign key (farmer_id) references USERS(id) on delete cascade" +
+        "foreign key (farmer_id) references USERS(id) on delete cascade," +
+        "foreign key (location_id) references LOCATIONS(id) on delete cascade" +
         ")";
     var result = conn.query(sql, function (err, result){
         if (err){
             throw err;
         }
-        console.log("USER TABLE CREATED");
+        console.log("WORKS TABLE CREATED");
     });
 
     conn.end();
@@ -46,7 +67,9 @@ var works = function (){
 
 
 exports.users = users;
+exports.locations = locations;
 exports.works = works;
 
 users();
+locations();
 works();

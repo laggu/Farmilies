@@ -2,7 +2,6 @@ var db_conn = require('./db_conn.js');
 
 var users = function (){
     conn = db_conn.db_conn();
-    console.log("Success");
     var sql = "create table if not exists USERS(" +
         "id int not null auto_increment," +
         "email varchar(50) not null," +
@@ -24,7 +23,6 @@ var users = function (){
 
 var locations = function (){
     conn = db_conn.db_conn();
-    console.log("Success");
     var sql = "create table if not exists LOCATIONS(" +
         "id int not null auto_increment," +
         "latitude double not null," +
@@ -44,17 +42,17 @@ var locations = function (){
 
 var works = function (){
     conn = db_conn.db_conn();
-    console.log("Success");
     var sql = "create table if not exists WORKS(" +
         "id int not null auto_increment," +
         "farmer_id int not null," +
         "title char(100) not null," +
         "description varchar(500) not null," +
         "reward int not null," +
-        "location_id int not null," +
+        "latitude double not null," +
+        "longitude double not null," +
+        "address_name varchar(100) not null," +
         "primary key(id)," +
-        "foreign key (farmer_id) references USERS(id) on delete cascade," +
-        "foreign key (location_id) references LOCATIONS(id) on delete cascade" +
+        "foreign key (farmer_id) references USERS(id) on delete cascade" +
         ") engine = InnoDB default charset=utf8";
     conn.query(sql, function (err, result){
         if (err){
@@ -68,11 +66,11 @@ var works = function (){
 
 var contracts = function(){
     conn = db_conn.db_conn();
-    console.log("Success");
     var sql = "create table if not exists CONTRACTS(" +
         "id int not null auto_increment," +
         "citizen_id int not null," +
         "work_id int not null," +
+        "status varchar(10) default '대기중'," +
         "date datetime not null," +
         "primary key(id)," +
         "foreign key (citizen_id) references USERS(id) on delete cascade," +
@@ -89,13 +87,10 @@ var contracts = function(){
 };
 
 exports.users = users;
-exports.locations = locations;
+//exports.locations = locations;
 exports.works = works;
 exports.contracts = contracts;
 
-/*
 users();
-locations();
 works();
 contracts();
-*/

@@ -34,6 +34,18 @@ router.get('/signin', function(req, res, next) {
     res.render('signin');
 });
 
+router.get('/mypage', function(req, res, next) {
+    res.render('mypage');
+});
+
+router.get('/contract_detail', function(req, res, next) {
+    res.render('contract_detail');
+});
+
+router.get('/contract_register', function(req, res, next) {
+    res.render('contract_register');
+});
+
 router.get('/workcheck', function(req, res, next) {
     res.sendfile('views/workcheck.html');
 });

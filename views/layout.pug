@@ -1,7 +1,14 @@
 doctype html
 html
   head
+    block head
     title= title
+    meta(name="viewport", content="width=device-width, initial-scale=1, shrink-to-fit=no")
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/css/bootstrap.css')
+    link(rel='stylesheet', href='/stylesheets/index.css')
+    script(src='/js/bootstrap.js')
   body
+    include menu
     block content
+    include footer

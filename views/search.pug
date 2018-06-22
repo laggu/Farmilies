@@ -1,0 +1,44 @@
+extends layout
+
+block content
+    <div class="container">
+
+    <!-- Portfolio Item Heading -->
+    <h1 class="my-4">작업 검색</h1>
+
+    <!-- Portfolio Item Row -->
+    <div class="row">
+
+    <div class="col-md-8">
+    <img id="map" class="img-fluid" src="http://placehold.it/750x500" alt="">
+    </div>
+
+    <div class="col-md-4">
+        <form action="/search">
+            <input type="text" name="address" class="form-control form-control-lg" placeholder="주소를 입력하세요">
+            <button type="submit" class="btn btn-block btn-lg">검색</button>
+        </form>
+        <div id="work_list">
+            table
+                thead
+                    tr
+                        th(width=200) title
+                        th(width=70) reward
+                tbody
+                    each val in works
+                        tr
+                            td #{val.title}
+                            td #{val.reward}
+                            td.none #{val.id}
+                            td
+                                a(href='/contract_detail') 선택
+        </div>
+    </div>
+
+    </div>
+    <!-- /.row -->
+
+    <!-- Related Projects Row -->
+    <div class="row">
+
+    </div>

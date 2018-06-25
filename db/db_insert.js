@@ -36,7 +36,6 @@ module.exports.works = works;
 module.exports.contracts = contracts;
 module.exports.locations = locations;
 
-
 person = {
     email: 'abc@naver.com',
     pw : 'asdf',

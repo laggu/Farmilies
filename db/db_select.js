@@ -57,9 +57,9 @@ module.exports.work_all = work_all;
 module.exports.contract_by_citizenid = contract_by_citizenid;
 module.exports.contract_by_farmerid = contract_by_farmerid;
 
+/*
 var p = function (err, result, fields){
     if (err){
-        console.log("SELECT USER FAIL");
         throw err;
     }
     console.log("SELECT USER SUCCESS");
@@ -83,3 +83,4 @@ var q = function (err, result, fields){
 // work_by_farmerid(1, q);
 // contract_by_citizenid(2,q);
 // contract_by_farmerid(1,q);
+*/

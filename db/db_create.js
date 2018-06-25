@@ -86,10 +86,10 @@ var contracts = function(){
     conn.end();
 };
 
-exports.users = users;
+module.exports.users = users;
 //exports.locations = locations;
-exports.works = works;
-exports.contracts = contracts;
+module.exports.works = works;
+module.exports.contracts = contracts;
 
 users();
 works();

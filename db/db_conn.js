@@ -20,4 +20,4 @@ var db_conn = function (){
     return con;
 };
 
-exports.db_conn = db_conn;
+module.exports.db_conn = db_conn;

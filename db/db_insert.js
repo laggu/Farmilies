@@ -31,10 +31,10 @@ var locations = function (location){
     insert("LOCATIONS", location);
 };
 
-exports.users = users;
-exports.works = works;
-exports.contracts = contracts;
-exports.locations = locations;
+module.exports.users = users;
+module.exports.works = works;
+module.exports.contracts = contracts;
+module.exports.locations = locations;
 
 
 person = {
@@ -62,19 +62,24 @@ users(person2);
 // locations(address);
 
 work = {
-    farmer_id: 1,
-    title: '모내기',
+    farmer_id: 2,
+    title: '감자캐기',
     description: '와서 좀 도와라',
     reward: 10,
-    latitude: 33.298527,
+    latitude: 34.298527,
     longitude: 51.070162,
     address_name: '서울시 강남구 테헤란로 20'
 };
 works(work);
 
+// contract = {
+//     citizen_id: 2,
+//     work_id: 1,
+//     date: '2018-08-10 19:00:00'
+// };
 contract = {
-    citizen_id: 2,
-    work_id: 1,
-    date: '2018-08-10 19:00:00'
+    citizen_id: 1,
+    work_id: 2,
+    date: '2018-07-10 19:00:00'
 };
 contracts(contract);

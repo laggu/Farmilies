@@ -1,6 +1,7 @@
 var express = require('express');
+var db_select = require('../db/db_select');
 var router = express.Router();
-var bodyParser = require('body-parser');
+//var bodyParser = require('body-parser');
 
 
 /* GET home page. */
@@ -9,14 +10,24 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/search', function(req, res, next) {
-    res.render('search', {works: [{id: 1, title: '감귤농장', reward: 5},{id: 2, title: '모내기', reward: 8},{id: 3, title: '배추농사', reward: 15}]});
+    db_select.work_all(function (err, result) {
+        if (err) {
+            return;
+        }
+        for(var i=0; i < result.length; ++i){
+            console.log(result[i]);
+            result[i] = JSON.parse(JSON.stringify(result[i]));
+            console.log(result[i]);
+        }
+        res.render('search', {works: result});
+    });
 });
 
 router.get('/signup', function(req, res, next) {
     res.render('signup');
 });
 
-router.post('/signup', bodyParser.urlencoded({extended: false}), function(req, res, next) {
+router.post('/signup', function(req, res, next) {
     var email = req.body.email;
     var pw = req.body.pw;
     var name = req.body.name;
@@ -35,7 +46,15 @@ router.get('/signin', function(req, res, next) {
 });
 
 router.get('/mypage', function(req, res, next) {
-    res.render('mypage');
+    var contract_as_farmer = db_select.contract_by_farmerid(1);
+    var contract_as_citizen = db_select.contract_by_citizenid(1);
+
+    var contract = {};
+
+    contract.farmer = contract_as_farmer;
+    contract.citizen = contract_as_citizen;
+
+    res.render('mypage', contract);
 });
 
 router.get('/contract_detail', function(req, res, next) {

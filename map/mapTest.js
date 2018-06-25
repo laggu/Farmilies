@@ -1,8 +1,8 @@
-
 var map = new daum.maps.Map(document.getElementById('map'), { // 지도를 표시할 div
     center : new daum.maps.LatLng(36.2683, 127.6358), // 지도의 중심좌표
-    level : 14 // 지도의 확대 레벨
+    level : 4 // 지도의 확대 레벨
 });
+
 // 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
 var mapTypeControl = new daum.maps.MapTypeControl();
 

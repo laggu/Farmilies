@@ -1,4 +1,5 @@
 var rpc_id = 0;
+var request = require('request');
 
 var invoke_contract = function(contract_key, farmer_key, address, reward, citizen_key, when){
     var restURL = 'transactions';
@@ -110,13 +111,16 @@ var call_loopchain_rest = function (restURL, functionName, param) {
             id: rpc_id++,
             method: functionName,
             params: param
-        })
+        }),
+        method: 'POST'
     };
-    request.post(options, function(err, res, result){
+    console.log('call_loopchain_rest' + rpc_id);
+    request(options, function(err, res, result){
+        console.log('request' + rpc_id);
         if (res.statusCode == 200) {
             console.log(JSON.parse(result));
         }
-    })
+    });
 };
 
 invoke_person(1);

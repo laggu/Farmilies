@@ -1,4 +1,4 @@
-var rpc_id = 0;
+var rpc_id = 1;
 var request = require('request');
 
 var invoke_contract = function(contract_key, farmer_key, address, reward, citizen_key, when){
@@ -103,54 +103,96 @@ var query_person = function (person_key) {
 };
 
 var call_loopchain_rest = function (restURL, functionName, param) {
+    var temp_rpc_id = rpc_id++;
+    if(restURL == 'query'){
+        temp_rpc_id = String(temp_rpc_id);
+    }
+
     var options = {
-        headers: {'Content-Type': 'applications/json'},
+        headers: {'Content-Type': 'application/json'},
         url: 'http://localhost:9000/api/v1/' + restURL,
-        body: JSON.stringify({
-            jsonrpc: "2.0",
-            id: rpc_id++,
-            method: functionName,
-            params: param
-        }),
-        method: 'POST'
+        body: {
+            "jsonrpc": "2.0",
+            "id": temp_rpc_id,
+            "method": functionName,
+            "params": param
+        },
+        json: true
     };
-    console.log('call_loopchain_rest' + rpc_id);
-    request(options, function(err, res, result){
-        console.log('request' + rpc_id);
+    console.log('call_loopchain_rest');
+    request.post(options, function(err, res, body){
+        console.log('');
+        if(err)
+            console.log("error");
         if (res.statusCode == 200) {
-            console.log(JSON.parse(result));
+            console.log(body)
+            console.log(body['response']['code']);
+            console.log(JSON.parse(body['response']['result']['data']))
+            // if(functionName=='query_contract'){
+            //     var a = JSON.parse(body['response']['result']['data']);
+            //     console.log(a['location']);
+            // }
         }
     });
 };
 
-invoke_person(1);
-invoke_person(2);
+//
+// invoke_person('1');
+// invoke_person('2');
+//
+// for(var i = 0 ; i < 1000000000; ++i);
+//
+// query_person('1');
+// query_person('2');
+//
+// for(var i = 0 ; i < 1000000000; ++i);
+//
+// invoke_purchase_token('1', "10");
+// invoke_purchase_token('2', "20");
+//
+// for(var i = 0 ; i < 1000000000; ++i);
+//
+// query_person('1');
+// query_person('2');
+//
+// for(var i = 0 ; i < 1000000000; ++i);
+//
+// invoke_spend_token('1', "3");
+// invoke_spend_token('2', "4");
+//
+// for(var i = 0 ; i < 1000000000; ++i);
+//
+// query_person('1');
+// query_person('2');
+//
+// for(var i = 0 ; i < 1000000000; ++i);
+//
+// invoke_contract('1', '1', "서울시", 3, '2', "내일");
+//
+// for(var i = 0 ; i < 1000000000; ++i);
+//
+// query_contract('1');
+//
+// for(var i = 0 ; i < 1000000000; ++i);
+//
+// invoke_cancel('1', '1', "그냥", "어제");
+//
+// for(var i = 0 ; i < 1000000000; ++i);
+//
+// query_contract('1');
+//
+// for(var i = 0 ; i < 1000000000; ++i);
+//
+// invoke_contract('2', '2', "서울시", 3, '1', "내일");
+//
+// for(var i = 0 ; i < 1000000000; ++i);
+//
+// query_contract('2');
+//
+// for(var i = 0 ; i < 1000000000; ++i);
+//
+// invoke_done('2', "09:00", "18:00");
+//
+// for(var i = 0 ; i < 1000000000; ++i);
 
-query_person(1);
-query_person(2);
-
-invoke_purchase_token(1, 10);
-invoke_purchase_token(1, 20);
-
-query_person(1);
-query_person(2);
-
-invoke_spend_token(1, 3);
-invoke_spend_token(2, 4);
-
-query_person(1);
-query_person(2);
-
-invoke_contract(1, 1, "서울시", 3, 2, "내일");
-
-query_contract(1);
-
-invoke_cancel(1, 1, "그냥", "어제");
-
-query_contract(1);
-
-invoke_contract(2, 2, "서울시", 3, 1, "내일");
-query_contract(2);
-
-invoke_done(2, "09:00", "18:00");
-query_contract(2);
+query_contract('2');

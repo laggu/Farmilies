@@ -34,7 +34,8 @@ block content
                             td #{val.reward}
                             td.none #{val.id}
                             td
-                                a(href='/contract_detail') 선택
+                                a(href='/contract_detail?id='+val.id)
+                                    button(type='button') 선택
         </div>
     </div>
 
@@ -45,5 +46,12 @@ block content
     <div class="row">
 
     </div>
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0d3c6299a2a6f27a3c7021914091f148"></script>
-    <script type="text/javascript" src="../map/mapTest.js"> </script>
+
+block js
+    script(type='text/javascript').
+        var address = !{JSON.stringify(address)}
+        var works = !{JSON.stringify(works)}
+    <script src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0d3c6299a2a6f27a3c7021914091f148&libraries=services,clusterer,drawing"></script>
+    <script type="text/javascript" src="../map/map_search.js"> </script>
+

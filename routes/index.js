@@ -78,7 +78,7 @@ router.get('/search', function(req, res, next) {
             return;
         }
         for(var i=0; i < result.length; ++i){
-            console.log(result[i]);
+            //console.log(result[i]);
             result[i] = JSON.parse(JSON.stringify(result[i]));
             console.log(result[i]);
         }
@@ -99,6 +99,7 @@ router.get('/mypage', function(req, res, next) {
 });
 
 router.get('/contract_detail', function(req, res, next) {
+    console.log(req.param("id"));
     res.render('contract_detail');
 });
 

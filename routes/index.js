@@ -14,9 +14,9 @@ router.get('/signup', function(req, res, next) {
 });
 
 router.post('/signup', function(req, res, next) {
-    var email = req.body.email;
-    var pw = req.body.pw;
-    var name = req.body.name;
+    var email = req.body['email'];
+    var pw = req.body['pw'];
+    var name = req.body['name'];
 
     console.log(req.headers);
     console.log(req.body);

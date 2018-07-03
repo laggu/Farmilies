@@ -136,7 +136,15 @@ var call_loopchain_rest = function (restURL, functionName, param) {
     });
 };
 
-//
+module.exports.invoke_contract = invoke_contract;
+module.exports.invoke_done = invoke_done;
+module.exports.invoke_cancel = invoke_cancel;
+module.exports.invoke_person = invoke_person;
+module.exports.invoke_purchase_token = invoke_purchase_token;
+module.exports.invoke_spend_token = invoke_spend_token;
+module.exports.query_contract = query_contract;
+module.exports.query_person = query_person;
+
 // invoke_person('1');
 // invoke_person('2');
 //
@@ -194,5 +202,5 @@ var call_loopchain_rest = function (restURL, functionName, param) {
 // invoke_done('2', "09:00", "18:00");
 //
 // for(var i = 0 ; i < 1000000000; ++i);
-
-query_contract('2');
+//
+//query_contract('2');

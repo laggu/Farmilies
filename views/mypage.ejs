@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/css/bootstrap.css' />
+    <link rel='stylesheet' href='/stylesheets/index.css' />
+    <script src="/js/bootstrap.js"></script>
+</head>
+
+<body>
+<% include ./menu.ejs %>
+
+    <div id="button_div">
+        <button class="btn btn-inline btn-lg btn-primary">농부</button>
+        <button class="btn btn-inline btn-lg btn-primary">시민</button>
+    </div>
+    <div id="working_list">
+
+    </div>
+
+<% include ./footer.ejs %>
+</body>
+
+</html>
+
+
+<!--block content-->
+    <!--#button_div-->
+        <!--button.btn.btn-inline.btn-lg.btn-primary 농부-->
+        <!--button.btn.btn-inline.btn-lg.btn-primary 시민-->
+    <!--#working_list-->

@@ -1,45 +1,48 @@
 var db_conn = require('./db_conn.js');
 
-var insert = function (table, value){
+var insert = function (table, value, callback){
     conn = db_conn.db_conn();
 
     var sql = "INSERT INTO "+ table +" SET ?";
     console.log(sql);
-    conn.query(sql, value, function (err, result){
-        if (err){
-            throw err;
-        }
-        console.log("INSERT INTO " + table + " SUCCESS");
-    });
+    conn.query(sql, value, callback);
+    // conn.query(sql, value, function (err, result){
+    //     if (err){
+    //         throw err;
+    //     }
+    //     console.log(result);
+    //     console.log(result['insertId']);
+    //     console.log("INSERT INTO " + table + " SUCCESS");
+    // });
 
     conn.end();
 };
 
-var users = function (user){
-    insert("USERS", user);
+var users = function (user, callback){
+    insert("USERS", user, callback);
 };
 
-var works = function (work){
-    insert("WORKS", work);
+var works = function (work, callback){
+    insert("WORKS", work, callback);
 };
 
-var contracts = function (contract){
-    insert("CONTRACTS", contract);
+var contracts = function (contract, callback){
+    insert("CONTRACTS", contract, callback);
 };
 
-var locations = function (location){
-    insert("LOCATIONS", location);
+var locations = function (location, callback){
+    insert("LOCATIONS", location, callback);
 };
 
 module.exports.users = users;
 module.exports.works = works;
 module.exports.contracts = contracts;
-module.exports.locations = locations;
+//module.exports.locations = locations;
 
 person = {
-    email: 'abc@naver.com',
+    email: 'abcd@naver.com',
     pw : 'asdf',
-    name : 'max',
+    name : 'hi',
     photo : 'aaaa'
 };
 
@@ -49,8 +52,8 @@ person2 = {
     name : 'aaa'
 };
 
-users(person);
-users(person2);
+//users(person);
+// users(person2);
 
 
 // address = {
@@ -69,7 +72,7 @@ work = {
     longitude: 51.070162,
     address_name: '서울시 강남구 테헤란로 20'
 };
-works(work);
+// works(work);
 
 // contract = {
 //     citizen_id: 2,
@@ -81,4 +84,4 @@ contract = {
     work_id: 2,
     date: '2018-07-10 19:00:00'
 };
-contracts(contract);
+// contracts(contract);

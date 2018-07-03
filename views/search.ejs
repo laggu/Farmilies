@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/css/bootstrap.css' />
+    <link rel='stylesheet' href='/stylesheets/index.css' />
+    <script src="/js/bootstrap.js"></script>
+</head>
+
+<body>
+<% include ./menu.ejs %>
+
+<div class="container">
+
+    <!-- Portfolio Item Heading -->
+    <h1 class="my-4">작업 검색</h1>
+
+    <!-- Portfolio Item Row -->
+    <div class="row">
+
+        <div class="col-md-8">
+            <div id="map_search"></div>
+        </div>
+
+
+
+        <div class="col-md-4">
+            <form action="/search">
+                <input type="text" name="address" class="form-control form-control-lg" placeholder="주소를 입력하세요">
+                <button type="submit" class="btn btn-block btn-lg">검색</button>
+            </form>
+            <div id="work_list">
+                <table>
+                    <thead>
+                        <tr>
+                            <th width="200"> title </th>
+                            <th width="100"> reward </th>
+                            <th width="100"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for(var i = 0 ; i < works.length; ++i) { %>
+                            <tr>
+                                <td><%= works[i].title %></td>
+                                <td><%= works[i].reward %></td>
+                                <td><a href="/work_detail?id=<%=works[i].id%>"><button>선택</button></a></td>
+                            </tr>
+                        <% }%>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- /.row -->
+
+    <!-- Related Projects Row -->
+    <div class="row">
+        <p><%= address %></p>
+        <p><%= works %></p>
+    </div>
+</div>
+
+<% include ./footer.ejs %>
+
+<script>
+    alert(1);
+    <% var add = address%>
+    alert(2);
+    var address = <%= add %>
+    alert(address);
+</script>
+
+<script src="/js/jquery.min.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0d3c6299a2a6f27a3c7021914091f148&libraries=services,clusterer,drawing"></script>
+<script type="text/javascript" src="../map/map_search.js"> </script>
+
+</body>
+
+</html>

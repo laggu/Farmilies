@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/css/bootstrap.css' />
+    <link rel='stylesheet' href='/stylesheets/index.css' />
+    <script src="/js/bootstrap.js"></script>
+</head>
+
+<body>
+<% include ./menu.ejs %>
+
+
+
+<% include ./footer.ejs %>
+</body>
+
+</html>
+
+<!--extends layout.ejs-->
+
+<!--block content-->
+    <!--form-->
+        <!--div-->
+            <!--label 작업명-->
+            <!--input(type="text")-->
+        <!--div-->
+            <!--label 주소-->
+            <!--input(type="text")-->
+        <!--div-->
+            <!--label 보상-->
+            <!--input(type="number")-->
+        <!--div-->
+            <!--label 시작 시간-->
+            <!--input#starttime.form_datetime(type="text" readonly=true)-->
+        <!--div-->
+            <!--label 종료 시간-->
+            <!--input.form_datetime(type="text" readonly=true)-->
+
+        <!--script.-->
+             <!--var dateform = document.getElementsByClassName('form_datetime');-->
+             <!--var starttime = document.getElementById('starttime');-->
+             <!--starttime.datetimepicker({format: 'yyyy-mm-dd hh: ii'});-->
+             <!--for(var i = 0 ; i < dateform.length; ++i) {-->
+                 <!--dateform[i].datetimepicker({format: 'yyyy-mm-dd hh:ii'});-->
+             <!--}-->

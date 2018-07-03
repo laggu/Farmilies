@@ -1,4 +1,4 @@
-var map = new daum.maps.Map(document.getElementById('map'), { // 지도를 표시할 div
+var map = new daum.maps.Map(document.getElementById('map_search'), { // 지도를 표시할 div
     center : new daum.maps.LatLng(36.2683, 127.6358), // 지도의 중심좌표
     level : 4 // 지도의 확대 레벨
 });

@@ -108,21 +108,31 @@
         <!-- Side Widget -->
         <div class="card my-4">
             <h5 class="card-header">map</h5>
+            <!--<div id="map_search"></div>-->
             <div id="map_detail"></div>
         </div>
     </div>
 
 </div>
 
-
+<p class="hide" id="work"><%= JSON.stringify(work) %></p>
 <!-- /.row -->
 
 
 
 <% include ./footer.ejs %>
 
+<script src="/js/jquery.min.js"></script>
+
+<script>
+    var work = $("#work").text();
+    // var works = [JSON.parse(work)];
+    work = JSON.parse(work);
+</script>
+
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0d3c6299a2a6f27a3c7021914091f148&libraries=services,clusterer,drawing"></script>
-<script type="text/javascript" src="../map/work_detail.js"> </script>
+<!--<script type="text/javascript" src="../map/map_search.js"> </script>-->
+<script type="text/javascript" src="../map/work_detail.js"></script>
 
 </body>
 

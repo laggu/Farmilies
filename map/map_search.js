@@ -39,7 +39,7 @@ for(var i = 0 ; i < works.length; ++i){
 
     var infowindow = new daum.maps.InfoWindow({
         content:    '<div>' +
-                        '<p>농부 이름 :' + works[i].farmer + '</p>' +
+                        '<p>농부 이름 :' + works[i].name + '</p>' +
                         '<p>작업 :' + works[i].title + '</p>' +
                         '<p>보상 :' + works[i].reward + '</p>' +
                     '</div>'
@@ -67,6 +67,6 @@ function makeOutListener(infowindow){
 
 function makeClickListener(id) {
     return function(){
-        location.href="/contract_detail?id="+id;
+        location.href="/work_detail?id="+id;
     }
 }

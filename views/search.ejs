@@ -42,10 +42,11 @@
                     </thead>
                     <tbody>
                         <% for(var i = 0 ; i < works.length; ++i) { %>
+                            <p class="hide works"> <%= works[i] %></p>
                             <tr>
-                                <td><%= works[i].title %></td>
-                                <td><%= works[i].reward %></td>
-                                <td><a href="/work_detail?id=<%=works[i].id%>"><button>선택</button></a></td>
+                                <td><%= JSON.parse(works[i]).title %></td>
+                                <td><%= JSON.parse(works[i]).reward %></td>
+                                <td><a href="/work_detail?id=<%= JSON.parse(works[i]).id %>"><button>선택</button></a></td>
                             </tr>
                         <% }%>
                     </tbody>
@@ -57,22 +58,22 @@
 
     <!-- Related Projects Row -->
     <div class="row">
-        <p><%= address %></p>
-        <p><%= works %></p>
+        <p id="address" class="hide"><%= address %></p>
+        <p id="works" class="hide"><%= works[0] %></p>
     </div>
+    <br>
 </div>
 
 <% include ./footer.ejs %>
 
-<script>
-    alert(1);
-    <% var add = address%>
-    alert(2);
-    var address = <%= add %>
-    alert(address);
-</script>
-
 <script src="/js/jquery.min.js"></script>
+<script>
+    var address = $("#address").text();
+    var works = [];
+    $(".works").each(function(){
+        works.push(JSON.parse($(this).text()));
+    })
+</script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0d3c6299a2a6f27a3c7021914091f148&libraries=services,clusterer,drawing"></script>
 <script type="text/javascript" src="../map/map_search.js"> </script>
 

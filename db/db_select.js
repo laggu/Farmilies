@@ -23,7 +23,7 @@ var user_by_id = function (user_id, callback){
 
 var work_all = function(callback){
     conn = db_conn.db_conn();
-    var sql = "SELECT * FROM WORKS";
+    var sql = "SELECT WORKS.*, USERS.name FROM WORKS, USERS where WORKS.farmer_id=USERS.id";
     console.log(sql);
     conn.query(sql, callback);
     conn.end();

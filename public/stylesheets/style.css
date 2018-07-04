@@ -7,8 +7,12 @@ a {
   color: #00B7FF;
 }
 
-.none{
+.hide{
   display: none;
+}
+
+.works{
+
 }
 
 #map_search{

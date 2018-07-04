@@ -88,7 +88,7 @@ router.get('/search', function(req, res, next) {
         }
         for(var i=0; i < result.length; ++i){
             //console.log(result[i]);
-            result[i] = JSON.parse(JSON.stringify(result[i]));
+            result[i] = JSON.stringify(result[i]);
             console.log(result[i]);
         }
         res.render('search', {title: 'Farmilies', loggedin: req.cookies.user ? true : false , works: result, address: req.param("address")});

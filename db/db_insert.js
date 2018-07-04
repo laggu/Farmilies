@@ -68,8 +68,8 @@ work = {
     title: '감자캐기',
     description: '와서 좀 도와라',
     reward: 10,
-    latitude: 34.298527,
-    longitude: 51.070162,
+    latitude: 36.298527,
+    longitude: 127.070162,
     address_name: '서울시 강남구 테헤란로 20'
 };
 // works(work);

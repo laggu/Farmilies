@@ -1,31 +1,24 @@
 <!DOCTYPE html>
 <html>
-
 <head>
+    <meta charset="UTF-8">
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel='stylesheet' href='/css/bootstrap.css' />
     <link rel='stylesheet' href='/stylesheets/index.css' />
     <script src="/js/bootstrap.js"></script>
 </head>
-
 <body>
 <% include ./menu.ejs %>
 
-<div id="qrcode"></div>
-<p id="user_id" class=""><%= id %></p>
-<p class=""><%= name %></p>
+<% for(var i = 0 ; i < people.length; ++i) { %>
+    <p> <%= people[i].title %> </p>
+    <p> <%= people[i].reward %> </p>
+    <p> <%= people[i].name %> </p>
+    <p> <%= people[i].date %> </p>
+    <p> <%= people[i].status %> </p>
+<% } %>
 
 <% include ./footer.ejs %>
-
-<script src="/js/jquery.min.js"></script>
-<script>
-    var id = $("#user_id").text();
-</script>
-
-<script src="/javascripts/qrcode.js"></script>
-<script src="/javascripts/qrcode_generate.js"></script>
-
 </body>
-
 </html>

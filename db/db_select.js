@@ -53,7 +53,7 @@ var contract_by_citizenid = function (citizen_id, callback){
 
 var contract_by_farmerid = function (farmer_id, callback){
     conn = db_conn.db_conn();
-    var sql = "SELECT WORKS.title, WORKS.reward, CITIZEN.name, CONTRACTS.id, CONTRACTS.date, CONTRACTS.status FROM USERS as FARMER, USERS as CITIZEN, WORKS, CONTRACTS WHERE FARMER.id = WORKS.farmer_id and WORKS.id = CONTRACTS.work_id and CONTRACTS.citizen_id = CITIZEN.id  and FARMER.id = " + farmer_id;
+    var sql = "SELECT WORKS.title, WORKS.reward, WORKS.address_name, CITIZEN.id as citizen_id, CITIZEN.name, CONTRACTS.id, CONTRACTS.date, CONTRACTS.status FROM USERS as FARMER, USERS as CITIZEN, WORKS, CONTRACTS WHERE FARMER.id = WORKS.farmer_id and WORKS.id = CONTRACTS.work_id and CONTRACTS.citizen_id = CITIZEN.id  and FARMER.id = " + farmer_id;
     conn.query(sql, callback);
     conn.end();
 };

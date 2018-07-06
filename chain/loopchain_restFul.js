@@ -1,7 +1,7 @@
 var rpc_id = 1;
 var request = require('request');
 
-var invoke_contract = function(contract_key, farmer_key, address, reward, citizen_key, when){
+var invoke_contract = function(contract_key, farmer_key, address, reward, citizen_key, when, callback){
     var restURL = 'transactions';
     var functionName = 'invoke_contract';
     var param = {
@@ -15,10 +15,10 @@ var invoke_contract = function(contract_key, farmer_key, address, reward, citize
             fulfillment: 'yet'
         }
     };
-    call_loopchain_rest(restURL, functionName, param);
+    call_loopchain_rest(restURL, functionName, param, callback);
 };
 
-var invoke_done = function (contract_key, starting_time, end_time) {
+var invoke_done = function (contract_key, starting_time, end_time, callback) {
     var restURL = 'transactions';
     var functionName = 'invoke_done';
     var param = {
@@ -28,10 +28,10 @@ var invoke_done = function (contract_key, starting_time, end_time) {
             end_time: end_time
         }
     };
-    call_loopchain_rest(restURL, functionName, param);
+    call_loopchain_rest(restURL, functionName, param, callback);
 };
 
-var invoke_cancel = function (contract_key, canceler, why, uptime) {
+var invoke_cancel = function (contract_key, canceler, why, uptime, callback) {
     var restURL = 'transactions';
     var functionName = 'invoke_cancel';
     var param = {
@@ -42,67 +42,67 @@ var invoke_cancel = function (contract_key, canceler, why, uptime) {
             uptime: uptime
         }
     };
-    call_loopchain_rest(restURL, functionName, param);
+    call_loopchain_rest(restURL, functionName, param, callback);
 };
 
-var invoke_person = function(person_key){
+var invoke_person = function(person_key, callback){
     var restURL = 'transactions';
     var functionName = 'invoke_person';
     var param = {
         key: person_key
     };
-    call_loopchain_rest(restURL, functionName, param);
+    call_loopchain_rest(restURL, functionName, param, callback);
 };
 
-var invoke_rating = function(person_key, rating){
+var invoke_rating = function(person_key, rating, callback){
     var restURL = 'transactions';
     var functionName = 'invoke_rating';
     var param = {
         key: person_key,
         rating: rating
     };
-    call_loopchain_rest(restURL, functionName, param);
+    call_loopchain_rest(restURL, functionName, param, callback);
 };
 
-var invoke_purchase_token = function(person_key, purchase_token){
+var invoke_purchase_token = function(person_key, purchase_token, callback){
     var restURL = 'transactions';
     var functionName = 'invoke_purchase_token';
     var param = {
         key: person_key,
         purchase_token: purchase_token
     };
-    call_loopchain_rest(restURL, functionName, param);
+    call_loopchain_rest(restURL, functionName, param, callback);
 };
 
-var invoke_spend_token = function(person_key, spending_amount){
+var invoke_spend_token = function(person_key, spending_amount, callback){
     var restURL = 'transactions';
     var functionName = 'invoke_spend_token';
     var param = {
         key: person_key,
         spending_amount: spending_amount
     };
-    call_loopchain_rest(restURL, functionName, param);
+    call_loopchain_rest(restURL, functionName, param, callback);
 };
 
-var query_contract = function (contract_key) {
+var query_contract = function (contract_key, callback) {
     var restURL = 'query';
     var functionName = 'query_contract';
     var param = {
         key: contract_key
     };
-    call_loopchain_rest(restURL, functionName, param);
+    call_loopchain_rest(restURL, functionName, param, callback);
 };
 
-var query_person = function (person_key) {
+var query_person = function (person_key, callback) {
     var restURL = 'query';
     var functionName = 'query_person';
     var param = {
         key: person_key
     };
-    call_loopchain_rest(restURL, functionName, param);
+    call_loopchain_rest(restURL, functionName, param, callback);
 };
 
-var call_loopchain_rest = function (restURL, functionName, param) {
+var call_loopchain_rest = function (restURL, functionName, param, callback) {
     var temp_rpc_id = rpc_id++;
     if(restURL == 'query'){
         temp_rpc_id = String(temp_rpc_id);
@@ -121,13 +121,10 @@ var call_loopchain_rest = function (restURL, functionName, param) {
     };
     console.log('call_loopchain_rest');
     request.post(options, function(err, res, body){
-        console.log('');
         if(err)
             console.log("error");
         if (res.statusCode == 200) {
-            console.log(body)
-            console.log(body['response']['code']);
-            console.log(JSON.parse(body['response']['result']['data']))
+            callback(res.body);
             // if(functionName=='query_contract'){
             //     var a = JSON.parse(body['response']['result']['data']);
             //     console.log(a['location']);
@@ -145,7 +142,9 @@ module.exports.invoke_spend_token = invoke_spend_token;
 module.exports.query_contract = query_contract;
 module.exports.query_person = query_person;
 
-// invoke_person('1');
+// invoke_person('1', function () {
+//     console.log(body['response'])
+// });
 // invoke_person('2');
 //
 // for(var i = 0 ; i < 1000000000; ++i);

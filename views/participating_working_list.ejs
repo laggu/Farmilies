@@ -1,0 +1,52 @@
+<p>참가 작업 내역</p>
+
+<table>
+    <tr>
+        <th>농부 이름</th>
+        <th>작업명</th>
+        <th>보상</th>
+        <th>주소</th>
+        <th>날짜</th>
+        <th>현재 상태</th>
+        <th>취소</th>
+    </tr>
+    <% for(var i = 0; i < works.length; ++i){ %>
+        <tr>
+            <td> <%= works[i].name %> </td>
+            <td> <%= works[i].title %> </td>
+            <td> <%= works[i].reward %> </td>
+            <td> <%= works[i].address_name %> </td>
+            <td> <%= works[i].date %> </td>
+            <td id="<%= works[i].id %>_status"> <%= works[i].status %> </td>
+            <td>
+                <% if(works[i].status == '취소'){%>
+                    <p>취소된 작업</p>
+                <% } else {%>
+                    <button id="<%= works[i].id %>_button" onclick="cancel(<%=works[i].id%>)">취소</button>
+                <% } %>
+            </td>
+        </tr>
+    <% } %>
+</table>
+
+<script>
+    function cancel(id){
+        $.ajax({
+            type : "GET",
+            url : "/change_work_status",
+            dataType : 'text',
+            data : {
+                id : id,
+                status : "취소"
+            },
+            error : function() {
+                alert("실패");
+            },
+            success : function(data){
+                $("#"+id+"_status").html("취소");
+                $("#"+id+"_button").html("취소된 작업");
+                $("#"+id+"_button").contents().unwrap().wrap('<p></p>');
+            }
+        });
+    }
+</script>

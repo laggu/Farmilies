@@ -70,7 +70,7 @@ var contracts = function(){
         "id int not null auto_increment," +
         "citizen_id int not null," +
         "work_id int not null," +
-        "status varchar(10) default '대기중'," +
+        "status varchar(10) default '승인 대기중'," +
         "date datetime not null," +
         "primary key(id)," +
         "foreign key (citizen_id) references USERS(id) on delete cascade," +

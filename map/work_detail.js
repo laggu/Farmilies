@@ -26,9 +26,16 @@ alert(Number(work['longitude']));
 var marker = new daum.maps.Marker({
     // position: location,
     position: new daum.maps.LatLng(Number(work['latitude']), Number(work['longitude'])),
-    title : work.title,
+    title : work.address_name,
 });
 
 alert(marker);
 
 marker.setMap(map);
+
+var infowindow = new daum.maps.InfoWindow({
+    position : new daum.maps.LatLng(Number(work['latitude']), Number(work['longitude'])),
+    content : '<p>'+work.address_name+'</p>'
+});
+
+infowindow.open(map, marker);

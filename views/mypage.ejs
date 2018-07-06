@@ -13,15 +13,61 @@
 <% include ./menu.ejs %>
 
     <div id="button_div">
-        <button class="btn btn-inline btn-lg btn-primary">농부</button>
-        <button class="btn btn-inline btn-lg btn-primary">시민</button>
+        <button class="btn btn-inline btn-lg btn-primary" onclick="mypage()">내 정보</button>
+        <button class="btn btn-inline btn-lg btn-primary" onclick="participating()">참가 작업</button>
+        <button class="btn btn-inline btn-lg btn-primary" onclick="recruiting()">구인 작업</button>
     </div>
-    <div id="working_list">
+    <div id="data_div">
 
     </div>
 
     <br/>
 <% include ./footer.ejs %>
+<script src="/js/jquery.min.js"></script>
+<script>
+    function participating() {
+        $.ajax({
+           type : "GET",
+           url : "/ajax_participating_list",
+           dataType : 'text',
+           error : function() {
+               $("#data_div").html("값을 불러올 수 없습니다.")
+           },
+           success : function(data){
+               $("#data_div").html(data);
+           }
+        });
+    }
+    function recruiting() {
+        $.ajax({
+            type : "GET",
+            url : "/ajax_recruiting_list",
+            dataType : 'text',
+            error : function() {
+                $("#data_div").html("값을 불러올 수 없습니다.")
+            },
+            success : function(data){
+                $("#data_div").html(data);
+            }
+        });
+    }
+    function mypage() {
+        $.ajax({
+            type : "GET",
+            url : "/ajax_user_info",
+            dataType : 'text',
+            error : function() {
+                $("#data_div").html("값을 불러올 수 없습니다.")
+            },
+            success : function(data){
+                $("#data_div").html(data);
+            }
+        });
+    }
+    $(document).ready(function(){
+        mypage();
+    })
+</script>
 </body>
 
 </html>

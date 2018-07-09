@@ -36,7 +36,6 @@
 <script>
     function approve(id){
         var work = JSON.parse(document.getElementById(id).innerHTML);
-        alert(work);
         $.ajax({
             type : "GET",
             url : "/change_work_status",
@@ -46,18 +45,23 @@
                 "status" : "작업확정",
                 "citizen" : work.citizen_id,
                 "address" : work.address_name,
-                "reward" : work.reward,
+                "reward" : Number(work.reward),
                 "when" : work.date
             },
             error : function() {
                 alert("실패");
             },
             success : function(data){
+                $("#"+work.id+"_button").onclick = "";
                 $("#"+work.id+"_status").html("작업확정");
                 $("#"+work.id+"_button").html("취소");
-                $("#"+work.id+"_button").onclick= function (){
+                $("#"+work.id+"_button").onclick = function() {
+                    alert("onclick changed");
                     cancel(work.id);
                 };
+                alert($("#"+work.id+"_button").onclick)
+                $("#"+work.id+"_button").setAttribute("onclick", "javascript: cancel("+work.id+");");
+                alert($("#"+work.id+"_button").onclick)
             }
         });
     }

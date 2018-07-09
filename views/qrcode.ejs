@@ -16,11 +16,16 @@
 <p id="user_id" class=""><%= id %></p>
 <p class=""><%= name %></p>
 
+<button onclick="print_qrcode()">Print QR code</button>
+
 <% include ./footer.ejs %>
 
 <script src="/js/jquery.min.js"></script>
 <script>
     var id = $("#user_id").text();
+    function print_qrcode() {
+        window.print();
+    }
 </script>
 
 <script src="/javascripts/qrcode.js"></script>

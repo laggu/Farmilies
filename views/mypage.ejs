@@ -15,7 +15,8 @@
     <div id="button_div">
         <button class="btn btn-inline btn-lg btn-primary" onclick="mypage()">내 정보</button>
         <button class="btn btn-inline btn-lg btn-primary" onclick="participating()">참가 작업</button>
-        <button class="btn btn-inline btn-lg btn-primary" onclick="recruiting()">구인 작업</button>
+        <button class="btn btn-inline btn-lg btn-primary" onclick="applicant()">지원자 관리</button>
+        <button class="btn btn-inline btn-lg btn-primary" onclick="uploaded_working()">구인 작업</button>
     </div>
     <div id="data_div">
 
@@ -38,10 +39,10 @@
            }
         });
     }
-    function recruiting() {
+    function applicant() {
         $.ajax({
             type : "GET",
-            url : "/ajax_recruiting_list",
+            url : "/ajax_applicant_list",
             dataType : 'text',
             error : function() {
                 $("#data_div").html("값을 불러올 수 없습니다.")
@@ -64,10 +65,47 @@
             }
         });
     }
-    $(document).ready(function(){
-        mypage();
-    })
+    function uploaded_working(){
+        $.ajax({
+            type : "GET",
+            url : "/ajax_uploaded_working_list",
+            dataType : 'text',
+            error : function() {
+                $("#data_div").html("값을 불러올 수 없습니다.")
+            },
+            success : function(data){
+                $("#data_div").html(data);
+            }
+        });
+    }
 </script>
+
+<% if(flag == 0) {%>
+    <script>
+        $(document).ready(function() {
+            mypage();
+        });
+    </script>
+<% } else if(flag == 1) { %>
+    <script>
+        $(document).ready(function() {
+            participating();
+        });
+    </script>
+<% } else if(flag == 2) { %>
+<script>
+    $(document).ready(function() {
+        applicant();
+    });
+</script>
+<% } else if(flag == 3) { %>
+<script>
+    $(document).ready(function() {
+        uploaded_working();
+    });
+</script>
+<% } %>
+
 </body>
 
 </html>

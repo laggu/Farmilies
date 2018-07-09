@@ -142,8 +142,8 @@ module.exports.invoke_spend_token = invoke_spend_token;
 module.exports.query_contract = query_contract;
 module.exports.query_person = query_person;
 
-// invoke_person('1', function () {
-//     console.log(body['response'])
+// invoke_person('1', function (body) {
+//     console.log(body)
 // });
 // invoke_person('2');
 //

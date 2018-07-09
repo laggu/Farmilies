@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/css/bootstrap.css' />
+    <link rel='stylesheet' href='/stylesheets/index.css' />
+    <script src="/js/bootstrap.js"></script>
+</head>
+
+<body>
+<% include ./menu.ejs %>
+
+    <div>
+        <form action="/work_register" method="post" id="work_form" name="work_form">
+            <div>
+                <label name="title">작업명</label>
+                <input type="text" name="title">
+            </div>
+            <div>
+                <label name="address_name" >주소</label>
+                <input type="text" name="address_name" onchange="getLatLng()">
+                <input type="hidden" id="latitude" name="latitude">
+                <input type="hidden" id="longitude" name="longitude">
+            </div>
+            <div>
+                <label name="reward">보상</label>
+                <input type="number" name="reward">
+            </div>
+            <div>
+                <label name="start_time">시작 시간</label>
+                <input type="time" name="start_time">
+            </div>
+            <div>
+                <label name="end_time">종료 시간</label>
+                <input type="time" name="end_time">
+            </div>
+        </form>
+        <div>
+            <label name="description">작업 설명</label>
+            <textarea rows="10" cols="50" form="work_form" name="description"> </textarea>
+        </div>
+        <div>
+            <button type="submit" form="work_form">등록</button>
+        </div>
+    </div>
+
+<% include ./footer.ejs %>
+</body>
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0d3c6299a2a6f27a3c7021914091f148&libraries=services"></script>
+<script>
+    document.cookie = "flag=3";
+    function getLatLng(){
+        address = document.work_form.address_name.value;
+        var geocoder = new daum.maps.services.Geocoder();
+        geocoder.addressSearch(address ,function (result, status) {
+            if (status === daum.maps.services.Status.OK) {
+                address = JSON.parse(JSON.stringify(result[0]));
+                var lat = Number(address['y']);
+                var long = Number(address['x']);
+                document.work_form.latitude.value=lat;
+                document.work_form.longitude.value=long;
+            }
+        });
+    }
+</script>
+
+</html>
+
+<!--extends layout.ejs-->
+
+<!--block content-->
+    <!--form-->
+        <!--div-->
+            <!--label 작업명-->
+            <!--input(type="text")-->
+        <!--div-->
+            <!--label 주소-->
+            <!--input(type="text")-->
+        <!--div-->
+            <!--label 보상-->
+            <!--input(type="number")-->
+        <!--div-->
+            <!--label 시작 시간-->
+            <!--input#starttime.form_datetime(type="text" readonly=true)-->
+        <!--div-->
+            <!--label 종료 시간-->
+            <!--input.form_datetime(type="text" readonly=true)-->
+
+        <!--script.-->
+             <!--var dateform = document.getElementsByClassName('form_datetime');-->
+             <!--var starttime = document.getElementById('starttime');-->
+             <!--starttime.datetimepicker({format: 'yyyy-mm-dd hh: ii'});-->
+             <!--for(var i = 0 ; i < dateform.length; ++i) {-->
+                 <!--dateform[i].datetimepicker({format: 'yyyy-mm-dd hh:ii'});-->
+             <!--}-->

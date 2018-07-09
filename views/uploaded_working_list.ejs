@@ -1,0 +1,34 @@
+<p>구인 작업</p>
+
+<table>
+    <tr>
+        <th>농부 이름</th>
+        <th>작업명</th>
+        <th>보상</th>
+        <th>주소</th>
+        <th>시작 시간</th>
+        <th>종료 시간</th>
+        <th>취소</th>
+    </tr>
+    <% for(var i = 0; i < works.length; ++i){ %>
+    <tr>
+        <td> <%= works[i].name %> </td>
+        <td> <%= works[i].title %> </td>
+        <td> <%= works[i].reward %> </td>
+        <td> <%= works[i].address_name %> </td>
+        <td> <%= works[i].start_time %> </td>
+        <td> <%= works[i].end_time %> </td>
+        <td id="<%= works[i].id %>_status"> <%= works[i].status %> </td>
+        <td>
+            <% if(works[i].status == '취소'){%>
+            <p>취소된 작업</p>
+            <% } else {%>
+            <button id="<%= works[i].id %>_button" onclick="cancel(<%=works[i].id%>)">취소</button>
+            <% } %>
+        </td>
+    </tr>
+    <% } %>
+</table>
+
+
+<a href="/work_register">작업 등록</a>

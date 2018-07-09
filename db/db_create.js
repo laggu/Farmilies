@@ -48,6 +48,8 @@ var works = function (){
         "title char(100) not null," +
         "description varchar(500) not null," +
         "reward int not null," +
+        "start_time TIME not null," +
+        "end_time TIME not null," +
         "latitude double not null," +
         "longitude double not null," +
         "address_name varchar(100) not null," +

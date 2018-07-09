@@ -55,7 +55,6 @@ person2 = {
 //users(person);
 // users(person2);
 
-
 // address = {
 //     latitude: 3.0,
 //     longitude: 5.0,

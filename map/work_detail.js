@@ -13,9 +13,6 @@ map.addControl(mapTypeControl, daum.maps.ControlPosition.TOPRIGHT);
 var zoomControl = new daum.maps.ZoomControl();
 map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
 
-alert(Number(work.latitude));
-alert(Number(work['longitude']));
-
 // var location = new daum.maps.LatLng(Number(work['latitude']), Number(work['longitude']));
 // map.setCenter(location);
 
@@ -28,8 +25,6 @@ var marker = new daum.maps.Marker({
     position: new daum.maps.LatLng(Number(work['latitude']), Number(work['longitude'])),
     title : work.address_name,
 });
-
-alert(marker);
 
 marker.setMap(map);
 

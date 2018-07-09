@@ -24,7 +24,6 @@ var user_by_id = function (user_id, callback){
 var work_all = function(callback){
     conn = db_conn.db_conn();
     var sql = "SELECT WORKS.*, USERS.name FROM WORKS, USERS where WORKS.farmer_id=USERS.id";
-    console.log(sql);
     conn.query(sql, callback);
     conn.end();
 };
@@ -32,7 +31,6 @@ var work_all = function(callback){
 var work_by_workid = function(work_id, callback){
     conn = db_conn.db_conn();
     var sql = "SELECT WORKS.*, USERS.name FROM WORKS, USERS where WORKS.farmer_id=USERS.id and WORKS.id="+work_id;
-    console.log(sql);
     conn.query(sql, callback);
     conn.end();
 };

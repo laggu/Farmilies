@@ -88,9 +88,7 @@ router.get('/search', function(req, res, next) {
             return;
         }
         for(var i=0; i < result.length; ++i){
-            //console.log(result[i]);
             result[i] = JSON.stringify(result[i]);
-            console.log(result[i]);
         }
         res.render('search', {title: 'Farmilies', loggedin: req.cookies.user ? true : false , works: result, address: req.param("address")});
     });
@@ -101,12 +99,14 @@ router.get('/mypage', function(req, res, next) {
     var contract_as_farmer = db_select.contract_by_farmerid(1);
     var contract_as_citizen = db_select.contract_by_citizenid(1);
 
+    var flag = 0;
+
     var contract = {};
 
     contract.farmer = contract_as_farmer;
     contract.citizen = contract_as_citizen;
 
-    res.render('mypage', {title: 'Farmilies', loggedin: req.cookies.user ? true : false ,});
+    res.render('mypage', {title: 'Farmilies', loggedin: req.cookies.user ? true : false , flag: flag});
 });
 
 router.get('/work_detail', function(req, res, next) {
@@ -121,14 +121,41 @@ router.get('/work_detail', function(req, res, next) {
         }
         console.log(result);
 
-        res.render('work_detail', {title: "Farmilies", loggedin: req.cookies.user ? true : false, work: result[0]});
+        res.render('work_detail', {title: "Farmilies", loggedin: req.cookies.user ? true : false, user_id: req.cookies.user.id, work: result[0]});
     };
 
     db_select.work_by_workid(req.param("id"), callback);
 });
 
-router.get('/contract_register', function(req, res, next) {
-    res.render('contract_register', {title: "Farmilies", loggedin: req.cookies.user ? true : false});
+router.get('/work_register', function(req, res, next) {
+    res.render('work_register', {title: "Farmilies", loggedin: req.cookies.user ? true : false});
+});
+
+router.post('/work_register', function(req, res, next) {
+    var work = {
+        farmer_id: req.cookies.user.id,
+        title: req.body.title,
+        address_name: req.body.address_name,
+        latitude: req.body.latitude,
+        longitude: req.body.longitude,
+        reward: req.body.reward,
+        start_time: req.body.start_time,
+        end_time: req.body.end_time,
+        description: req.body.description
+    };
+    var callback = function(err, result){
+        if(err){
+            return;
+        }
+        if (result.length == 0){
+            return;
+        }
+        console.log("작업 등록 완료");
+        console.log(result);
+        res.render('mypage', {title: "Farmilies", loggedin: req.cookies.user ? true : false, flag: req.cookies.flag});
+    };
+
+    db_insert.works(work, callback);
 });
 
 router.get('/qrcode', function(req, res, next) {
@@ -153,7 +180,6 @@ router.get('/work_check', function(req, res, next) {
 
         res.render('work_check', {title: "Farmilies", loggedin: req.cookies.user ? true : false, id: req.cookies.user.id, people: result });
     })
-
 });
 
 router.get('/ajax_user_info', function(req, res, next) {
@@ -181,7 +207,7 @@ router.get('/ajax_participating_list', function(req, res, next) {
     db_select.contract_by_citizenid(req.cookies.user.id, callback);
 });
 
-router.get('/ajax_recruiting_list', function(req, res, next) {
+router.get('/ajax_applicant_list', function(req, res, next) {
     var callback = function(err, result) {
         if (err) {
             return;
@@ -191,13 +217,13 @@ router.get('/ajax_recruiting_list', function(req, res, next) {
         }
         console.log(result);
 
-        res.render('recruiting_working_list', {works: result});
+        res.render('applicant_list', {works: result});
     };
 
     db_select.contract_by_farmerid(req.cookies.user.id, callback);
 });
 
-router.get('/work_approve', function(req, res, next) {
+router.get('/ajax_uploaded_working_list', function(req, res, next) {
     var callback = function(err, result) {
         if (err) {
             return;
@@ -207,10 +233,27 @@ router.get('/work_approve', function(req, res, next) {
         }
         console.log(result);
 
-        res.render('recruiting_working_list', {works: result});
+        res.render('uploaded_working_list', {works: result});
     };
 
-    db_select.contract_by_farmerid(req.cookies.user.id, callback);
+    db_select.work_by_farmerid(req.cookies.user.id, callback);
+});
+
+router.get('/ajax_get_contract_status', function(req, res, next) {
+    var callback = function(err, result) {
+        if (err) {
+            return;
+        }
+        console.log(result);
+        if (result.length == 0) {
+            res.send('0');
+        }
+        else {
+            res.send('1')
+        }
+    };
+
+    db_select.work_by_farmerid(req.cookies.user.id, callback);
 });
 
 router.get('/change_work_status', function(req, res, next) {

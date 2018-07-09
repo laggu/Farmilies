@@ -10,9 +10,9 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', function(req, res, next) {
     console.log('cookie');
-    console.log(req.cookies);
-    console.log(req.cookies.user ? true : false);
-    res.render('index', { title: 'Farmilies', loggedin: req.cookies.user ? true : false });
+    console.log(req.session);
+    //console.log(req.session.user ? true : false);
+    res.render('index', { title: 'Farmilies', loggedin: req.session.user ? true : false });
 });
 
 router.get('/signup', function(req, res, next) {
@@ -70,10 +70,14 @@ router.post('/signin', function(req, res, next) {
         console.log(result[0]);
         console.log(result[0]['id']);
 
-        res.cookie('user', {
-            id : result[0]['id'],
-            name : result[0]['name']
-        });
+        req.session.user = {
+            id: result[0]['id'],
+            name: result[0]['name']
+        };
+        // res.cookie('user', {
+        //     id : result[0]['id'],
+        //     name : result[0]['name']
+        // });
         res.redirect('/');
     };
 
@@ -90,7 +94,7 @@ router.get('/search', function(req, res, next) {
         for(var i=0; i < result.length; ++i){
             result[i] = JSON.stringify(result[i]);
         }
-        res.render('search', {title: 'Farmilies', loggedin: req.cookies.user ? true : false , works: result, address: req.param("address")});
+        res.render('search', {title: 'Farmilies', loggedin: req.session.user ? true : false , works: result, address: req.param("address")});
     });
 });
 
@@ -106,7 +110,7 @@ router.get('/mypage', function(req, res, next) {
     contract.farmer = contract_as_farmer;
     contract.citizen = contract_as_citizen;
 
-    res.render('mypage', {title: 'Farmilies', loggedin: req.cookies.user ? true : false , flag: flag});
+    res.render('mypage', {title: 'Farmilies', loggedin: req.session.user ? true : false , flag: flag});
 });
 
 router.get('/work_detail', function(req, res, next) {
@@ -121,14 +125,14 @@ router.get('/work_detail', function(req, res, next) {
         }
         console.log(result);
 
-        res.render('work_detail', {title: "Farmilies", loggedin: req.cookies.user ? true : false, user_id: req.cookies.user.id, work: result[0]});
+        res.render('work_detail', {title: "Farmilies", loggedin: req.session.user ? true : false, user_id: req.session.user.id, work: result[0]});
     };
 
     db_select.work_by_workid(req.param("id"), callback);
 });
 
 router.get('/work_register', function(req, res, next) {
-    res.render('work_register', {title: "Farmilies", loggedin: req.cookies.user ? true : false});
+    res.render('work_register', {title: "Farmilies", loggedin: req.session.user ? true : false});
 });
 
 router.post('/work_register', function(req, res, next) {
@@ -152,19 +156,20 @@ router.post('/work_register', function(req, res, next) {
         }
         console.log("작업 등록 완료");
         console.log(result);
-        res.render('mypage', {title: "Farmilies", loggedin: req.cookies.user ? true : false, flag: req.cookies.flag});
+        res.render('mypage', {title: "Farmilies", loggedin: req.session.user ? true : false, flag: req.cookies.flag});
     };
 
     db_insert.works(work, callback);
 });
 
 router.get('/qrcode', function(req, res, next) {
-    res.render('qrcode', {title: "Farmilies", loggedin: req.cookies.user ? true : false, id: req.cookies.user.id, name: req.cookies.user.name});
+    res.render('qrcode', {title: "Farmilies", loggedin: req.session.user ? true : false, id: req.session.user.id, name: req.session.user.name});
 });
 
 router.get('/logout', function(req, res, next) {
-    res.clearCookie('user');
-    res.redirect('/');
+    req.session.destroy(function(err) {
+        res.redirect('/');
+    });
 });
 
 router.get('/work_check', function(req, res, next) {
@@ -178,16 +183,16 @@ router.get('/work_check', function(req, res, next) {
 
         console.log(result);
 
-        res.render('work_check', {title: "Farmilies", loggedin: req.cookies.user ? true : false, id: req.cookies.user.id, people: result });
+        res.render('work_check', {title: "Farmilies", loggedin: req.session.user ? true : false, id: req.session.user.id, people: result });
     })
 });
 
 router.get('/ajax_user_info', function(req, res, next) {
     var callback = function(body){
         var data = JSON.parse(body.response.result.data);
-        res.render('user_info', {name: req.cookies.user.name, token: data.token, binded_token: data.binded_token, rating: data.rating_count ? (data.rating/data.rating_count) : 0 });
+        res.render('user_info', {name: req.session.user.name, token: data.token, binded_token: data.binded_token, rating: data.rating_count ? (data.rating/data.rating_count) : 0 });
     };
-    loopchain.query_person(String(req.cookies.user.id), callback);
+    loopchain.query_person(String(req.session.user.id), callback);
 
 });
 
@@ -204,7 +209,7 @@ router.get('/ajax_participating_list', function(req, res, next) {
         res.render('participating_working_list', {works: result});
     };
 
-    db_select.contract_by_citizenid(req.cookies.user.id, callback);
+    db_select.contract_by_citizenid(req.session.user.id, callback);
 });
 
 router.get('/ajax_applicant_list', function(req, res, next) {
@@ -220,7 +225,7 @@ router.get('/ajax_applicant_list', function(req, res, next) {
         res.render('applicant_list', {works: result});
     };
 
-    db_select.contract_by_farmerid(req.cookies.user.id, callback);
+    db_select.contract_by_farmerid(req.session.user.id, callback);
 });
 
 router.get('/ajax_uploaded_working_list', function(req, res, next) {
@@ -236,7 +241,7 @@ router.get('/ajax_uploaded_working_list', function(req, res, next) {
         res.render('uploaded_working_list', {works: result});
     };
 
-    db_select.work_by_farmerid(req.cookies.user.id, callback);
+    db_select.work_by_farmerid(req.session.user.id, callback);
 });
 
 router.get('/ajax_get_contract_status', function(req, res, next) {
@@ -253,7 +258,7 @@ router.get('/ajax_get_contract_status', function(req, res, next) {
         }
     };
 
-    db_select.work_by_farmerid(req.cookies.user.id, callback);
+    db_select.work_by_farmerid(req.session.user.id, callback);
 });
 
 router.get('/change_work_status', function(req, res, next) {
@@ -275,9 +280,9 @@ router.get('/change_work_status', function(req, res, next) {
         };
 
         if(req.query.status == '작업확정'){
-            loopchain.invoke_contract(req.query.id, String(req.cookies.user.id), req.query.address, req.query.reward, req.query.citizen, req.query.when, callback);
+            loopchain.invoke_contract(req.query.id, String(req.session.user.id), req.query.address, req.query.reward, req.query.citizen, req.query.when, callback);
         }else if(req.query.status == '취소'){
-            loopchain.invoke_cancel(req.query.id, String(req.cookies.user.id), "", new Date().toLocaleString(), callback);
+            loopchain.invoke_cancel(req.query.id, String(req.session.user.id), "", new Date().toLocaleString(), callback);
         }
     };
 

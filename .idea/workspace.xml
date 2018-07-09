@@ -2,10 +2,45 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f20f54c3-e2fe-4658-b7a8-587ab1392b52" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/applicant_list.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/applicant_list.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/qrcode.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/qrcode.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/work_detail.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/work_detail.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/crc/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/crc/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/crc/lib/crc1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/crc/lib/crc16.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/crc/lib/crc16_ccitt.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/crc/lib/crc16_kermit.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/crc/lib/crc16_modbus.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/crc/lib/crc16_xmodem.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/crc/lib/crc24.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/crc/lib/crc32.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/crc/lib/crc8.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/crc/lib/crc8_1wire.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/crc/lib/create_buffer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/crc/lib/define_crc.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/crc/lib/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/crc/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/express-session/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/express-session/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/express-session/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/express-session/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/express-session/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/express-session/session/cookie.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/express-session/session/memory.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/express-session/session/session.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/express-session/session/store.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/random-bytes/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/random-bytes/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/random-bytes/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/random-bytes/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/random-bytes/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/uid-safe/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/uid-safe/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/uid-safe/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/uid-safe/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/uid-safe/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/index.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -22,11 +57,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="290">
-              <caret line="273" column="21" lean-forward="true" selection-start-line="273" selection-start-column="21" selection-end-line="273" selection-end-column="21" />
+            <state relative-caret-position="405">
+              <caret line="72" column="28" lean-forward="true" selection-start-line="72" selection-start-column="28" selection-end-line="72" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -34,8 +69,8 @@
       <file leaf-file-name="work_register.ejs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/work_register.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="68" />
+            <state relative-caret-position="1020">
+              <caret line="68" selection-start-line="68" selection-end-line="68" />
             </state>
           </provider>
         </entry>
@@ -44,16 +79,16 @@
         <entry file="file://$PROJECT_DIR$/views/issue.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="210">
-              <caret line="14" column="2" lean-forward="true" selection-start-line="14" selection-start-column="2" selection-end-line="14" selection-end-column="2" />
+              <caret line="14" column="2" selection-start-line="14" selection-start-column="2" selection-end-line="14" selection-end-column="2" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="qrcode.ejs" pinned="false" current-in-tab="true">
+      <file leaf-file-name="qrcode.ejs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/qrcode.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="25" column="24" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
+            <state relative-caret-position="420">
+              <caret line="33" column="7" selection-start-line="33" selection-start-column="7" selection-end-line="33" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -62,7 +97,16 @@
         <entry file="file://$PROJECT_DIR$/views/uploaded_working_list.ejs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="390">
-              <caret line="26" column="19" lean-forward="true" selection-start-line="26" selection-start-column="19" selection-end-line="26" selection-end-column="19" />
+              <caret line="26" column="19" selection-start-line="26" selection-start-column="19" selection-end-line="26" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="420">
+              <caret line="31" column="31" lean-forward="true" selection-start-line="31" selection-start-column="31" selection-end-line="31" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -70,7 +114,7 @@
       <file leaf-file-name="participating_working_list.ejs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/participating_working_list.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
+            <state relative-caret-position="705">
               <caret line="47" column="72" selection-start-line="47" selection-start-column="72" selection-end-line="47" selection-end-column="72" />
             </state>
           </provider>
@@ -79,8 +123,8 @@
       <file leaf-file-name="applicant_list.ejs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/applicant_list.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="305">
-              <caret line="62" column="94" lean-forward="true" selection-start-line="62" selection-start-column="87" selection-end-line="62" selection-end-column="94" />
+            <state relative-caret-position="900">
+              <caret line="64" column="13" selection-start-line="64" selection-start-column="13" selection-end-line="64" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -97,17 +141,8 @@
       <file leaf-file-name="work_detail.ejs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/work_detail.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="395">
+            <state relative-caret-position="1965">
               <caret line="131" column="53" selection-start-line="131" selection-start-column="53" selection-end-line="131" selection-end-column="53" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="users.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/users.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
             </state>
           </provider>
         </entry>
@@ -152,7 +187,6 @@
         <option value="$PROJECT_DIR$/views/search.pug" />
         <option value="$PROJECT_DIR$/views/contract_register.pug" />
         <option value="$PROJECT_DIR$/views/signup.pug" />
-        <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/views/index.pug" />
         <option value="$PROJECT_DIR$/views/menu.ejs" />
         <option value="$PROJECT_DIR$/views/footer.ejs" />
@@ -180,12 +214,13 @@
         <option value="$PROJECT_DIR$/map/work_detail.js" />
         <option value="$PROJECT_DIR$/chain/loopchain_restFul.js" />
         <option value="$PROJECT_DIR$/db/db_select.js" />
-        <option value="$PROJECT_DIR$/routes/index.js" />
         <option value="$PROJECT_DIR$/views/participating_working_list.ejs" />
         <option value="$PROJECT_DIR$/views/applicant_list.ejs" />
         <option value="$PROJECT_DIR$/views/issue.txt" />
         <option value="$PROJECT_DIR$/views/work_detail.ejs" />
         <option value="$PROJECT_DIR$/views/qrcode.ejs" />
+        <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/routes/index.js" />
       </list>
     </option>
   </component>
@@ -265,11 +300,6 @@
               <item name="Farmilies" type="b2602c69:ProjectViewProjectNode" />
               <item name="Farmilies" type="462c0819:PsiDirectoryNode" />
               <item name="routes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Farmilies" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Farmilies" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -367,7 +397,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="240768000" />
+    <option name="totallyTimeSpent" value="241795000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-11" width="1857" height="1092" extended-state="6" />
@@ -385,12 +415,23 @@
       <window_info id="Favorites" order="2" sideWeight="0.50158733" side_tool="true" weight="0.25272927" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39979014" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info id="npm" order="2" sideWeight="0.50158733" side_tool="true" weight="0.25272927" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4984127" visible="true" weight="0.25272927" />
+      <window_info id="Structure" order="1" sideWeight="0.50158733" side_tool="true" weight="0.25272927" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49945414" visible="true" weight="0.33892968" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39979014" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50054586" side_tool="true" weight="0.33053514" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32948583" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49945414" weight="0.32948583" />
+      <window_info id="Favorites" order="2" sideWeight="0.50158733" side_tool="true" weight="0.25272927" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -480,14 +521,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/javascripts/qrcode.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="n#style#0;n#table#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/views/workcheck.html" />
     <entry file="file://$PROJECT_DIR$/views/work_check.js" />
@@ -641,13 +675,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="42" selection-start-line="42" selection-end-line="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/users.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -665,41 +692,34 @@
     <entry file="file://$PROJECT_DIR$/views/uploaded_working_list.ejs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
-          <caret line="26" column="19" lean-forward="true" selection-start-line="26" selection-start-column="19" selection-end-line="26" selection-end-column="19" />
+          <caret line="26" column="19" selection-start-line="26" selection-start-column="19" selection-end-line="26" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/participating_working_list.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
+        <state relative-caret-position="705">
           <caret line="47" column="72" selection-start-line="47" selection-start-column="72" selection-end-line="47" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="273" column="21" lean-forward="true" selection-start-line="273" selection-start-column="21" selection-end-line="273" selection-end-column="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/work_register.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="68" />
+        <state relative-caret-position="1020">
+          <caret line="68" selection-start-line="68" selection-end-line="68" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/applicant_list.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="62" column="94" lean-forward="true" selection-start-line="62" selection-start-column="87" selection-end-line="62" selection-end-column="94" />
+        <state relative-caret-position="900">
+          <caret line="64" column="13" selection-start-line="64" selection-start-column="13" selection-end-line="64" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/work_detail.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
+        <state relative-caret-position="1965">
           <caret line="131" column="53" selection-start-line="131" selection-start-column="53" selection-end-line="131" selection-end-column="53" />
         </state>
       </provider>
@@ -707,14 +727,28 @@
     <entry file="file://$PROJECT_DIR$/views/issue.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
-          <caret line="14" column="2" lean-forward="true" selection-start-line="14" selection-start-column="2" selection-end-line="14" selection-end-column="2" />
+          <caret line="14" column="2" selection-start-line="14" selection-start-column="2" selection-end-line="14" selection-end-column="2" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/qrcode.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="24" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
+        <state relative-caret-position="420">
+          <caret line="33" column="7" selection-start-line="33" selection-start-column="7" selection-end-line="33" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="31" column="31" lean-forward="true" selection-start-line="31" selection-start-column="31" selection-end-line="31" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="72" column="28" lean-forward="true" selection-start-line="72" selection-start-column="28" selection-end-line="72" selection-end-column="28" />
         </state>
       </provider>
     </entry>
